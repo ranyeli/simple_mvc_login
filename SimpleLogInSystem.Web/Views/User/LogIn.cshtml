@@ -1,0 +1,23 @@
+﻿@model SimpleLogInSystem.Web.Models.UserModel
+@{
+    ViewBag.Title = "LogIn";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Log In Failed. Review your login details.")
+    <fieldset>
+        <legend>Login Form</legend>
+        <div></div>
+        @Html.LabelFor(f => f.Email)
+        @Html.TextBoxFor(f => f.Email)
+        @Html.ValidationMessageFor(f=>f.Email)
+
+        @Html.LabelFor(f => f.Password)
+        @Html.PasswordFor(f=>f.Password)
+        @Html.ValidationMessageFor(f=>f.Password)
+    </fieldset>
+
+    <input type="submit" value="Log In" />
+   
+}

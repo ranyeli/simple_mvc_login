@@ -52,10 +52,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleLogInSystem\SimpleLogInSystem.csproj">
+    <ProjectReference Include="..\SimpleLogInSystem\SimpleLogInSystem.Web.csproj">
       <Project>{A06C7A06-1568-4051-9944-FDD7606B268A}</Project>
-      <Name>SimpleLogInSystem</Name>
+      <Name>SimpleLogInSystem.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

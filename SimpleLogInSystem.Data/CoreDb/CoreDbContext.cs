@@ -10,6 +10,6 @@ namespace SimpleLogInSystem.Data.CoreDb
 {
     public class CoreDbContext:DbContext
     {
-        DbSet<User> Users { get; set; }
+       public DbSet<User> Users { get; set; }
     }
 }
