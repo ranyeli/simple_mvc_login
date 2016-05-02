@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SimpleLogInSystem.Data.CoreDb.Entities;
+using System.Web.Security;
+using System.Collections.Specialized;
 
 namespace SimpleLogInSystem.Web.Controllers
 {
@@ -29,6 +31,8 @@ namespace SimpleLogInSystem.Web.Controllers
             {
                 if (IsValid(user.Email, user.Password))
                 {
+                    FormsAuthentication.SetAuthCookie(user.Email, true);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -48,13 +52,32 @@ namespace SimpleLogInSystem.Web.Controllers
         [HttpPost]
         public ActionResult Registration(Models.UserModel user)
         {
+            if (ModelState.IsValid)
+            {
+                using (var db = new CoreDbContext())
+                {
+                    var crypto = new SimpleCrypto.PBKDF2();
+                    var encryPass = crypto.Compute(user.Password);
+                    var sysUser = db.Users.Create();
+                    sysUser.Email = user.Email;
+                    sysUser.Password = encryPass;
+                    sysUser.PasswordSalt = crypto.Salt;
+
+                    db.Users.Add(sysUser);
+                    db.SaveChanges();
+                    FormsAuthentication.SetAuthCookie(user.Email, true);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult LogOut()
         {
-            return View();
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
         }
 
         private bool IsValid(string email, string password)
@@ -72,9 +95,8 @@ namespace SimpleLogInSystem.Web.Controllers
                     {
                         isValid = true;
                     }
-                } 
+                }
             }
-
 
             return isValid;
         }

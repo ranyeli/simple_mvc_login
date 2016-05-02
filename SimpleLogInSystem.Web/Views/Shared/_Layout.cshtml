@@ -30,7 +30,7 @@
             @if (Request.IsAuthenticated)
             {
                 <strong>@Html.Encode(User.Identity.Name)</strong>
-                Html.ActionLink("Log Out", "LogOut", "User");
+                @Html.ActionLink("Log Out", "LogOut", "User");
             }
             else
             {

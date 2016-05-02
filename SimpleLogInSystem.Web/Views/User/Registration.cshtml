@@ -1,7 +1,27 @@
-﻿
+﻿@model SimpleLogInSystem.Web.Models.UserModel
 @{
     ViewBag.Title = "Registration";
 }
 
-<h2>Registration</h2>
+@using (Html.BeginForm())
+{
+    Html.ValidationSummary(true, "Registration failed. Check your details.");
+    <fieldset>
+        <legend>Create User</legend>
+        <div>
+            @Html.LabelFor(f => f.Email)
+            @Html.TextBoxFor(f => f.Email)
+            @Html.ValidationMessageFor(f => f.Email)
+        </div>
+        <div>
+            @Html.LabelFor(f => f.Password)
+            @Html.PasswordFor(f => f.Password)
+            @Html.ValidationMessageFor(f => f.Password)
+        </div>
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+
+    </fieldset>
+}
 
