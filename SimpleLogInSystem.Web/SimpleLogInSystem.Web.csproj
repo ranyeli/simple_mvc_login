@@ -152,6 +152,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\loggin - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\SimpleLogInSystemWeb20160505072043 - Web Deploy.pubxml" />
     <None Include="scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="scripts\jquery-2.2.3.js" />
     <Content Include="scripts\jquery-2.2.3.min.js" />
@@ -196,9 +198,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimpleLogInSystem.Data\SimpleLogInSystem.Data.csproj">
+    <ProjectReference Include="..\SimpleLogInSystem.Core\SimpleLogInSystem.Core.csproj">
       <Project>{e953960c-f93a-4a02-9f24-6af43f40b08d}</Project>
-      <Name>SimpleLogInSystem.Data</Name>
+      <Name>SimpleLogInSystem.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

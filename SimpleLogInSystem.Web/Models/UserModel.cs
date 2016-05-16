@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleLogInSystem.Core.Interfaces;
 
 namespace SimpleLogInSystem.Web.Models
 {
-    public class UserModel
+    public class UserModel: IUserModel
     {
         [Required]
         [EmailAddress]

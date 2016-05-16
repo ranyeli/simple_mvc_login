@@ -1,4 +1,4 @@
-namespace SimpleLogInSystem.Data.Migrations
+namespace SimpleLogInSystem.Core.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

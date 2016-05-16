@@ -1,19 +1,19 @@
-namespace SimpleLogInSystem.Data.Migrations
+namespace SimpleLogInSystem.Core.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SimpleLogInSystem.Data.CoreDb.CoreDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SimpleLogInSystem.Core.CoreDb.CoreDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "SimpleLogInSystem.Data.CoreDb.CoreDbContext";
+            ContextKey = "SimpleLogInSystem.Core.CoreDb.CoreDbContext";
         }
 
-        protected override void Seed(SimpleLogInSystem.Data.CoreDb.CoreDbContext context)
+        protected override void Seed(SimpleLogInSystem.Core.CoreDb.CoreDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

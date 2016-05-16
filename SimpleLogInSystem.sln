@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogInSystem.Web", "Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogInSystem.Tests", "SimpleLogInSystem.Tests\SimpleLogInSystem.Tests.csproj", "{F4BC360E-CC83-4488-A890-CB0E6C6E01C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogInSystem.Data", "SimpleLogInSystem.Data\SimpleLogInSystem.Data.csproj", "{E953960C-F93A-4A02-9F24-6AF43F40B08D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLogInSystem.Core", "SimpleLogInSystem.Core\SimpleLogInSystem.Core.csproj", "{E953960C-F93A-4A02-9F24-6AF43F40B08D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,12 +1,13 @@
-﻿using SimpleLogInSystem.Data.CoreDb;
+﻿using SimpleLogInSystem.Core.CoreDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SimpleLogInSystem.Data.CoreDb.Entities;
+using SimpleLogInSystem.Core.CoreDb.Entities;
 using System.Web.Security;
-using System.Collections.Specialized;
+using System.Data.Entity;
+using SimpleLogInSystem.Core.Services;
 
 namespace SimpleLogInSystem.Web.Controllers
 {
@@ -27,20 +28,12 @@ namespace SimpleLogInSystem.Web.Controllers
         [HttpPost]
         public ActionResult LogIn(Models.UserModel user)
         {
-            if (ModelState.IsValid)
-            {
-                if (IsValid(user.Email, user.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(user.Email, true);
+            var validate = new UserValidationService();
 
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Log In data is incorrect.");
-                }
-            }
-            return View();
+            if (!validate.IsUserValid(ModelState, user)) return View();
+
+            FormsAuthentication.SetAuthCookie(user.Email, true);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -78,27 +71,6 @@ namespace SimpleLogInSystem.Web.Controllers
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Index", "Home");
-        }
-
-        private bool IsValid(string email, string password)
-        {
-            var crypto = new SimpleCrypto.PBKDF2();
-            var isValid = false;
-
-            using (var db = new CoreDbContext())
-            {
-                var user = db.Users.FirstOrDefault(u => u.Email == email);
-
-                if (user != null)
-                {
-                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
-                    {
-                        isValid = true;
-                    }
-                }
-            }
-
-            return isValid;
         }
     }
 }
